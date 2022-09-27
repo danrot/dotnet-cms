@@ -1,6 +1,8 @@
 namespace DotNetCMS.Application.Test.Pages;
 
 using DotNetCMS.Application.Pages;
+using DotNetCMS.Application.Security;
+using DotNetCMS.Security.Memory;
 using DotNetCMS.Domain.Pages;
 using DotNetCMS.Persistence.Memory.Pages;
 using Xunit;
@@ -11,10 +13,19 @@ public sealed class PageServiceTest
 
 	private readonly PageRepository _pageRepository;
 
+	private readonly SecurityService _securityService;
+
 	public PageServiceTest()
 	{
 		_pageRepository = new PageRepository();
-		_pageService = new PageService(_pageRepository);
+		_securityService = new SecurityService();
+		_pageService = new PageService(_pageRepository, _securityService);
+	}
+
+	[Fact]
+	public async void GetAllEmptyWithoutAuthorizationAsync()
+	{
+		await Assert.ThrowsAsync<AccessDeniedException>(() => _pageService.GetAllAsync());
 	}
 
 	[Fact]

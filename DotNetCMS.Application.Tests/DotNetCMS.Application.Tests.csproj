@@ -11,6 +11,7 @@
     <ProjectReference Include="..\DotNetCMS.Application\DotNetCMS.Application.csproj" />
     <ProjectReference Include="..\DotNetCMS.Persistence.Memory\DotNetCMS.Persistence.Memory.csproj" />
     <ProjectReference Include="..\DotNetCMS.Domain\DotNetCMS.Domain.csproj" />
+    <ProjectReference Include="..\DotNetCMS.Security.Memory\DotNetCMS.Security.Memory.csproj" />
   </ItemGroup>
 
   <ItemGroup>

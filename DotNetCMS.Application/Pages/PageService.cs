@@ -1,5 +1,6 @@
 namespace DotNetCMS.Application.Pages;
 
+using DotNetCMS.Application.Security;
 using DotNetCMS.Domain.Pages;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
@@ -8,13 +9,17 @@ public sealed class PageService
 {
 	private readonly IPageRepository _pageRepository;
 
-	public PageService(IPageRepository pageRepository)
+	private readonly ISecurityService _securityService;
+
+	public PageService(IPageRepository pageRepository, ISecurityService securityService)
 	{
 		_pageRepository = pageRepository;
+		_securityService = securityService;
 	}
 
 	public Task<List<Page>> GetAllAsync()
 	{
+		_securityService.DenyAccessUnlessAuthorized();
 		return _pageRepository.GetAllAsync();
 	}
 

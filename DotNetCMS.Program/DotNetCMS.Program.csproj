@@ -4,9 +4,11 @@
     <ProjectReference Include="..\DotNetCMS.Persistence.EntityFrameworkCore\DotNetCMS.Persistence.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\DotNetCMS.Rest\DotNetCMS.Rest.csproj" />
     <ProjectReference Include="..\DotNetCMS.Persistence.EntityFrameworkCore.AspNetCore\DotNetCMS.Persistence.EntityFrameworkCore.AspNetCore.csproj" />
+    <ProjectReference Include="..\DotNetCMS.Security.AspNetCore\DotNetCMS.Security.AspNetCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.3">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
